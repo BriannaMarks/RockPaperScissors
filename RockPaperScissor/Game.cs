@@ -10,6 +10,9 @@ namespace RockPaperScissor
     {
         Player NewPlayerOne;
         Player NewPlayerTwo;
+        string winner;
+        int numberOfChoiceOptions = 5;
+        
         
         public void IntroToTheGame()
         {
@@ -47,8 +50,42 @@ namespace RockPaperScissor
 
             while (NewPlayerOne.GetPlayerScore() < 2 && NewPlayerTwo.GetPlayerScore() < 2)
             {
+                NewPlayerOne.ChoiceInquiry();
+                NewPlayerTwo.ChoiceInquiry();
+                ComparingPlayerChoices();
 
             }
+        }
+
+        public void ComparingPlayerChoices()
+        {
+            int i;
+
+            i = (numberOfChoiceOptions + NewPlayerOne.GetPlayerChoice() - NewPlayerTwo.GetPlayerChoice()) % numberOfChoiceOptions;
+
+            if (i == 0)
+            {
+                Console.WriteLine("It's a tie!");
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+            }
+            else if (i % 2 == 1)
+            {
+                Console.WriteLine("{0} wins!", NewPlayerOne.RecallPlayerName());
+                NewPlayerOne.AddOneToPlayerScore();
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+            }
+            else if (i % 2 == 0)
+            {
+                Console.WriteLine("{0} wins!", NewPlayerTwo.RecallPlayerName());
+                NewPlayerTwo.AddOneToPlayerScore();
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+            }
+            else
+            {
+                Console.WriteLine("Error in 'ComparingPlayerChoices'.");
+            }
+            
+                        
         }
 
      }
