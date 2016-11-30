@@ -11,7 +11,6 @@ namespace RockPaperScissor
         protected int choice;
         protected string name;
         protected int score;
-
         public virtual void GetPlayerName()
         {
             name = "None";
@@ -36,7 +35,6 @@ namespace RockPaperScissor
         }
         public int AddOneToPlayerScore()
         {
-            
             return score++;
         }
     }

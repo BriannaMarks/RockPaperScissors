@@ -8,7 +8,6 @@ namespace RockPaperScissor
 {
     public class Computer : Player
     {
-        
         Random computerRNG = new Random();
 
         public override void GetPlayerName()

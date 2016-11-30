@@ -10,16 +10,20 @@ namespace RockPaperScissor
     {
         Player NewPlayerOne;
         Player NewPlayerTwo;
-        string winner;
         int numberOfChoiceOptions = 5;
         
-        
+        public void StartFromTheBegining()
+        {
+            IntroToTheGame();
+            SelectNumberOfPlayers();
+            StartGameLoop();
+        }
         public void IntroToTheGame()
         {
             Console.WriteLine("Lets play Rock, Paper, Scissor, Lizzard, Spock!");
             Console.WriteLine("How many players?");
             Console.WriteLine("1 or 2");
-            
+
         }
         public void SelectNumberOfPlayers()
         {
@@ -27,18 +31,20 @@ namespace RockPaperScissor
             switch (numberOfPlayers)
             {
                 case "1":
+                case "one":
 
                     NewPlayerOne = new Human();
                     NewPlayerTwo = new Computer();
                     break;
 
                 case "2":
+                case "two":
                     NewPlayerOne = new Human();
                     NewPlayerTwo = new Human();
                     break;
 
                 default:
-                    Console.WriteLine("Please choose '1' or '2' players.");
+                    Console.WriteLine("Invalid entry. Please choose 1 or 2 players.");
                     SelectNumberOfPlayers();
                     break;
             }
@@ -53,8 +59,8 @@ namespace RockPaperScissor
                 NewPlayerOne.ChoiceInquiry();
                 NewPlayerTwo.ChoiceInquiry();
                 ComparingPlayerChoices();
-
             }
+            ReplayGameChoice();
         }
 
         public void ComparingPlayerChoices()
@@ -83,10 +89,30 @@ namespace RockPaperScissor
             else
             {
                 Console.WriteLine("Error in 'ComparingPlayerChoices'.");
-            }
-            
-                        
+            }            
         }
 
+        public void ReplayGameChoice()
+        {
+            Console.WriteLine("Play Again?");
+            
+            switch (Console.ReadLine().ToLower())
+            {
+                case "yes":
+                case "y":
+                    StartFromTheBegining();
+                    break;
+                case "no":
+                case "n":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Invalid entry. Please enter yes or no.");
+                    ReplayGameChoice();
+                    break;
+            }
+
+
+        }
      }
  }

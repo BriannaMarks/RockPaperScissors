@@ -11,11 +11,7 @@ namespace RockPaperScissor
         static void Main(string[] args)
         {
             Game Start = new Game();
-            Start.IntroToTheGame();
-            Start.SelectNumberOfPlayers();
-            Start.StartGameLoop();
-
-            Console.ReadKey();
+            Start.StartFromTheBegining();     
         }
     }
 }

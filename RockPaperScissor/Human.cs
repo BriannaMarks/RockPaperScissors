@@ -12,16 +12,15 @@ namespace RockPaperScissor
 
         public override void GetPlayerName()
         {
-            Console.WriteLine("What is your Name?");
+            Console.WriteLine("Enter your name, Player.");
             name = Console.ReadLine();
         }
 
         public override int ChoiceInquiry()
         {
-            Console.WriteLine("What is your play choice?");
+            Console.WriteLine("What is your play choice, {0}?", name);
 
             switch (Console.ReadLine().ToLower())
-
             {
                 case "rock":
                     choice = 1;
@@ -44,11 +43,11 @@ namespace RockPaperScissor
                     return choice;
 
                 default:
-                    Console.WriteLine("Error.Please enter a valid choice.");
+                    Console.WriteLine("Error. Please enter a valid choice:");
+                    Console.WriteLine("Rock, Paper, Scissors, Lizard, or Spock.");
                     ChoiceInquiry();
                     return choice;
             }
-
         }
     }
 }
