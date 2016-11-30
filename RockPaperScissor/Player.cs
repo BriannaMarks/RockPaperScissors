@@ -8,27 +8,22 @@ namespace RockPaperScissor
 {
     public class Player
     {
-        public string name;
-        public string choice;
+        protected string choice;
+        string name;
+        protected int score;
 
-        public Player(string Name, string Choice)
+        public virtual void GetPlayerName()
         {
-            name = Name;
-            choice = Choice;
+            name = "None";
         }
-        public virtual string PlayerGameName()
+        public string GetPlayerChoice()
         {
-            Console.WriteLine("What is your name?");
-            name = Console.ReadLine();
-            return name;
-        }
-        public virtual string PlayerGameChoice()
-        {
-            Console.WriteLine("What is your choice? (rock, paper, scissors, lizard, spock)");
-            choice = Console.ReadLine();
             return choice;
-            
+
         }
-        
+        public int GetPlayerScore()
+        {
+            return score;
+        }
     }
 }

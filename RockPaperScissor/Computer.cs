@@ -8,22 +8,17 @@ namespace RockPaperScissor
 {
     public class Computer : Player
     {
-        public Computer(string Name, string Choice) : base(Name, Choice)
+        string name;
+        Random computerRNG = new Random();
+
+        public override void GetPlayerName()
         {
-            name = Name;
-            choice = Choice;
+            name = "Computer";
         }
-        public override string PlayerGameName()
-        {
-            name = "computer";
-            return name;
-        }
-        public override string PlayerGameChoice()
-        {
-            RandomNumberGenerator PickANumber = new RandomNumberGenerator();
-            choice = PickANumber.ComputerRNG();
-            return choice;
-        }
+
+
+
+
 
     }
 }

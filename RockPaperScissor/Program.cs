@@ -10,18 +10,12 @@ namespace RockPaperScissor
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Lets play Rock, Paper, Scissor, Lizzard, Spock!");
-            Console.WriteLine("How many players?");
-            Console.WriteLine("-one or two-");
-        int NumberOfGameRounds = 0;
-            while (NumberOfGameRounds < 4)
-            {
-              NumberOfGameRounds++;
-              NumberOfPlayers Start = new NumberOfPlayers();
-              Start.PlayerNumber();
-              
-            }
-              Console.ReadKey();
+            Game Start = new Game();
+            Start.IntroToTheGame();
+            Start.SelectNumberOfPlayers();
+            Start.StartGameLoop();
+
+            Console.ReadKey();
         }
     }
 }

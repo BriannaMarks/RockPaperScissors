@@ -8,20 +8,20 @@ namespace RockPaperScissor
 {
     public class Human : Player
     {
-        public Human(string Name, string Choice) : base(Name, Choice)
+        string name;
+
+        public override void GetPlayerName()
         {
-            name = Name;
-            choice = Choice;
+            Console.WriteLine("What is your Name?");
+            name = Console.ReadLine();
+        }
+        public string ChoiceInquiry()
+        {
+            Console.WriteLine("What is your play choice?");
+            choice = Console.ReadLine();
+            return choice;
+
         }
 
-        public override string PlayerGameName()
-        {
-            return base.PlayerGameName();
-        }
-        public override string PlayerGameChoice()
-        {
-            return base.PlayerGameChoice();
-
-        }
     }
 }
