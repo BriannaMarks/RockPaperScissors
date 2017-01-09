@@ -10,8 +10,8 @@ namespace RockPaperScissor
     {
         static void Main(string[] args)
         {
-            Game Start = new Game();
-            Start.StartFromTheBegining();     
+            Game NewGame = new Game();
+            NewGame.StartFromTheBegining();     
         }
     }
 }

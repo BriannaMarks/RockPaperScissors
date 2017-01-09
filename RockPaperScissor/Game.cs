@@ -11,19 +11,17 @@ namespace RockPaperScissor
         Player NewPlayerOne;
         Player NewPlayerTwo;
         int numberOfChoiceOptions = 5;
-        
         public void StartFromTheBegining()
         {
-            IntroToTheGame();
+            IntroduceTheGame();
             SelectNumberOfPlayers();
             StartGameLoop();
         }
-        public void IntroToTheGame()
+        public void IntroduceTheGame()
         {
             Console.WriteLine("Lets play Rock, Paper, Scissor, Lizzard, Spock!");
             Console.WriteLine("How many players?");
             Console.WriteLine("1 or 2");
-
         }
         public void SelectNumberOfPlayers()
         {
@@ -32,17 +30,14 @@ namespace RockPaperScissor
             {
                 case "1":
                 case "one":
-
                     NewPlayerOne = new Human();
                     NewPlayerTwo = new Computer();
                     break;
-
                 case "2":
                 case "two":
                     NewPlayerOne = new Human();
                     NewPlayerTwo = new Human();
                     break;
-
                 default:
                     Console.WriteLine("Invalid entry. Please choose 1 or 2 players.");
                     SelectNumberOfPlayers();
@@ -51,47 +46,44 @@ namespace RockPaperScissor
         }
         public void StartGameLoop()
         {
-            NewPlayerOne.GetPlayerName();
-            NewPlayerTwo.GetPlayerName();
-
+            NewPlayerOne.SetPlayerName();
+            NewPlayerTwo.SetPlayerName();
             while (NewPlayerOne.GetPlayerScore() < 2 && NewPlayerTwo.GetPlayerScore() < 2)
             {
-                NewPlayerOne.ChoiceInquiry();
-                NewPlayerTwo.ChoiceInquiry();
-                ComparingPlayerChoices();
+                NewPlayerOne.GetChoice();
+                NewPlayerTwo.GetChoice();
+                ComparePlayerChoices();
             }
             ReplayGameChoice();
         }
-
-        public void ComparingPlayerChoices()
+        public void ComparePlayerChoices()
         {
-            int i;
+            int playerChoices;
 
-            i = (numberOfChoiceOptions + NewPlayerOne.GetPlayerChoice() - NewPlayerTwo.GetPlayerChoice()) % numberOfChoiceOptions;
+            playerChoices = (numberOfChoiceOptions + NewPlayerOne.GetPlayerChoice() - NewPlayerTwo.GetPlayerChoice()) % numberOfChoiceOptions;
 
-            if (i == 0)
+            if (playerChoices == 0)
             {
                 Console.WriteLine("It's a tie!");
-                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.GetPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.GetPlayerName(), NewPlayerTwo.GetPlayerScore());
             }
-            else if (i % 2 == 1)
+            else if (playerChoices % 2 == 1)
             {
-                Console.WriteLine("{0} wins!", NewPlayerOne.RecallPlayerName());
+                Console.WriteLine("{0} wins!", NewPlayerOne.GetPlayerName());
                 NewPlayerOne.AddOneToPlayerScore();
-                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.GetPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.GetPlayerName(), NewPlayerTwo.GetPlayerScore());
             }
-            else if (i % 2 == 0)
+            else if (playerChoices % 2 == 0)
             {
-                Console.WriteLine("{0} wins!", NewPlayerTwo.RecallPlayerName());
+                Console.WriteLine("{0} wins!", NewPlayerTwo.GetPlayerName());
                 NewPlayerTwo.AddOneToPlayerScore();
-                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.RecallPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.RecallPlayerName(), NewPlayerTwo.GetPlayerScore());
+                Console.WriteLine("{0}: {1}     {2}: {3}", NewPlayerOne.GetPlayerName(), NewPlayerOne.GetPlayerScore(), NewPlayerTwo.GetPlayerName(), NewPlayerTwo.GetPlayerScore());
             }
             else
             {
                 Console.WriteLine("Error in 'ComparingPlayerChoices'.");
             }            
         }
-
         public void ReplayGameChoice()
         {
             Console.WriteLine("Play Again?");
@@ -111,8 +103,6 @@ namespace RockPaperScissor
                     ReplayGameChoice();
                     break;
             }
-
-
         }
      }
  }

@@ -11,16 +11,15 @@ namespace RockPaperScissor
         protected int choice;
         protected string name;
         protected int score;
-        public virtual void GetPlayerName()
+        public virtual void SetPlayerName()
         {
             name = "None";
         }
         public int GetPlayerChoice()
         {
             return choice;
-
         }
-        public string RecallPlayerName()
+        public string GetPlayerName()
         {
             return name;
         }
@@ -28,8 +27,7 @@ namespace RockPaperScissor
         {
             return score;
         }
-
-        public virtual int ChoiceInquiry()
+        public virtual int GetChoice()
         {
             return choice;
         }
